@@ -36,9 +36,9 @@ const PartOfService = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <a rel="noopener noreferrer" href="#" className="block">
+                  <div rel="noopener noreferrer" href="#" className="block">
                     <h3 className="text-xl font-semibold ">{place.title}</h3>
-                  </a>
+                  </div>
                   <p className="leading-snug ">
                     {place.description.length > 100
                       ? place.description.slice(0, 100)
