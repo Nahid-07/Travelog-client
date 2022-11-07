@@ -1,4 +1,6 @@
 import React from 'react';
+import Articales from './Articales';
+import Article2 from './Article2';
 import PartOfService from './PartOfService';
 import Slider from './Slider';
 
@@ -7,6 +9,8 @@ const Home = () => {
         <div>
             <Slider></Slider>
             <PartOfService></PartOfService>
+            <Articales></Articales>
+            <Article2></Article2>
         </div>
     );
 };
