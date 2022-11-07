@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const menu = <>
-      <li className="text-white text-lg"><Link>Home</Link></li>
-      <li className="text-white text-lg"><Link>Services</Link></li>
-      <li className="text-white text-lg"><Link>My reviews</Link></li>
-      <li className="text-white text-lg"><Link>Login</Link></li>
-      <li className="text-white text-lg"><Link>Signup</Link></li>
+      <li className="text-white text-lg"><Link to='/'>Home</Link></li>
+      <li className="text-white text-lg"><Link to='/services'>Services</Link></li>
+      <li className="text-white text-lg"><Link to='/myreviews'>My reviews</Link></li>
+      <li className="text-white text-lg"><Link to='login'>Login</Link></li>
+      <li className="text-white text-lg"><Link to='signup'>Signup</Link></li>
     </>
   return (
     <div className="navbar bg-[#393E46] py-5">
