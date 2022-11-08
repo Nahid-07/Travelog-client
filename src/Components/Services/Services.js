@@ -8,7 +8,7 @@ const Services = () => {
         .then(data => setServices(data))
     },[])
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20 justify-items-center'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20 justify-items-center px-2'>
             {
                 services.map(service => <div className="max-w-xs rounded-md shadow-md  ">
                 <img src={service.img} alt="" className="object-cover object-center w-full rounded-t-md h-72 " />

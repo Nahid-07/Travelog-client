@@ -35,6 +35,7 @@ const PartOfService = () => {
                     className="block object-cover object-center w-full rounded-md h-72 "
                   />
                 </div>
+
                 <div className="space-y-2">
                   <div rel="noopener noreferrer" href="#" className="block">
                     <h3 className="text-xl font-semibold ">{place.title}</h3>
