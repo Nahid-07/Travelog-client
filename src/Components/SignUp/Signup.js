@@ -24,7 +24,7 @@ const Signup = () => {
             updateUserProfile(name,photoURL)
             console.log(user);
         })
-        .catch(err => console.log(err))
+        .catch(err => setError(err.message))
         setError('')
     }
     const handleGoogle = ()=>{
