@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import {  useLoaderData } from "react-router-dom";
 import { ContextProvider } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
 
@@ -65,7 +65,7 @@ const ServiceDetails = () => {
             <p>{data.description}</p>
             <h1 className="text-3xl font-bold">Transport</h1>
             <p>{data.transport}</p>
-            <h1>Time</h1>
+            <h1 className="font-semibold">Time</h1>
             <p>{data.time}</p>
             <p className="text-2xl font-semibold">{data.explore}</p>
             <p className="text-xl">

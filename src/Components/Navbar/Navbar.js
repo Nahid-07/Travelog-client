@@ -19,7 +19,7 @@ const Navbar = () => {
       }
       {
         user?.email && <li className="text-white">
-        <Link to="/adservice">Add service</Link>
+        <Link to="/adservices">Add service</Link>
       </li>
       }
       {user?.email ? (
