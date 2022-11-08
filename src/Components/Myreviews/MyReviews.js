@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ContextProvider } from "../../Context/AuthContext";
+import useTitle from "../hook/useTitle";
 
 const MyReviews = () => {
+  useTitle('my_reviews')
   const { user, loading } = useContext(ContextProvider);
   const [comments, setComments] = useState([]);
 

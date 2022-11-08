@@ -22,6 +22,9 @@ const Navbar = () => {
         <Link to="/adservices">Add service</Link>
       </li>
       }
+      <li className="text-white">
+        <Link to="/blog">Blog</Link>
+      </li>
       {user?.email ? (
         <>
           <li onClick={logOut} className="text-white">

@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ContextProvider } from '../../Context/AuthContext';
+import useTitle from '../hook/useTitle';
 
 const Signup = () => {
     const [error,setError] = useState('');
     const {signUp,updateUserProfile,googleLogin,loading} = useContext(ContextProvider);
+    useTitle('Register')
     const navigate = useNavigate()
     const handleSubmit = (event)=>{
       if(loading){

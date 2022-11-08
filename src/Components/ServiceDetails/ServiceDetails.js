@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import {  useLoaderData } from "react-router-dom";
+import {  Navigate, useLoaderData } from "react-router-dom";
 import { ContextProvider } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
+import useTitle from "../hook/useTitle";
 
 const ServiceDetails = () => {
   const data = useLoaderData();
   const { user } = useContext(ContextProvider);
   const [comments, setComments] = useState([]);
-  console.log(user);
+  useTitle('service_details')
+  // console.log(user);
   //   console.log(data);
 
   const handleReview = (e) => {
@@ -19,7 +21,7 @@ const ServiceDetails = () => {
       message,
       name,
       photo,
-      email : user.email,
+      email : user?.email,
       title: data.title
     };
     fetch("http://localhost:5000/comments", {
@@ -31,6 +33,7 @@ const ServiceDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if(data.acknowledged){
           Swal.fire({
             position: "center",
@@ -48,6 +51,11 @@ const ServiceDetails = () => {
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, [comments]);
+  // const handleComment=()=>{
+  //   if(!user?.emial){
+  //     return <Navigate to='/login'></Navigate>
+  //   }
+  // }
   return (
     <section className="">
       <div className="container max-w-full p-6 mx-auto space-y-6 sm:space-y-12">

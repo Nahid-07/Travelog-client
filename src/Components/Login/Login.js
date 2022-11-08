@@ -1,10 +1,12 @@
 import React, { useContext, useState  } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ContextProvider } from '../../Context/AuthContext';
+import useTitle from '../hook/useTitle';
 
 const Login = () => {
     const [error,setError]=useState('');
-    const {login,googleLogin,loading} = useContext(ContextProvider)
+    const {login,googleLogin,loading} = useContext(ContextProvider);
+    useTitle('login')
     const navigate = useNavigate();
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -49,6 +51,7 @@ const Login = () => {
               name="email"
               placeholder="email"
               className="w-full px-4 py-3 rounded-md "
+              required
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -60,6 +63,7 @@ const Login = () => {
               name="password"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md"
+              required
             />
             <div className="flex justify-end text-xs ">
               <a rel="noopener noreferrer" href="#">
