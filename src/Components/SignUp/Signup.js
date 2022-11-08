@@ -1,11 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ContextProvider } from '../../Context/AuthContext';
 
 const Signup = () => {
     const [error,setError] = useState('');
-    const {signUp,updateUserProfile,googleLogin} = useContext(ContextProvider);
+    const {signUp,updateUserProfile,googleLogin,loading} = useContext(ContextProvider);
+    const navigate = useNavigate()
     const handleSubmit = (event)=>{
+      if(loading){
+        return <progress className="progress w-full"></progress>
+      }
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;
@@ -21,7 +25,8 @@ const Signup = () => {
         signUp(email,password)
         .then( result => {
             const user = result.user;
-            updateUserProfile(name,photoURL)
+            updateUserProfile(name,photoURL);
+            navigate('/')
             console.log(user);
         })
         .catch(err => setError(err.message))

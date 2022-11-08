@@ -1,10 +1,16 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState  } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ContextProvider } from '../../Context/AuthContext';
 
 const Login = () => {
     const [error,setError]=useState('');
-    const {login,googleLogin} = useContext(ContextProvider)
+    const {login,googleLogin,loading} = useContext(ContextProvider)
+    const navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+    if(loading){
+      return <progress className="progress w-full"></progress>
+    }
     const handleSubmit = e =>{
         e.preventDefault()
         const form = e.target;
@@ -13,8 +19,8 @@ const Login = () => {
         login(email,password)
         .then(result =>{
             const user = result.user;
-            
             console.log(user);
+            navigate(from, { replace: true })
         }).catch(err => setError(err.message))
 
         setError('')

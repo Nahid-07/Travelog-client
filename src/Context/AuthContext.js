@@ -11,18 +11,22 @@ const AuthContext = ({ children }) => {
     const provider =new GoogleAuthProvider()
     // sign up with email and password created
     const signUp = (email,password)=>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth,email,password)
     }
     // sign in 
     const login = (email,password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
     // google sign in
     const googleLogin = ()=>{
+        setLoading(true)
         return signInWithPopup(auth,provider)
     }
     // update profile
     const updateUserProfile = (name,photo)=>{
+        setLoading(true)
         return updateProfile(auth.currentUser,{
             displayName : name,
             photoURL : photo
@@ -30,26 +34,29 @@ const AuthContext = ({ children }) => {
     }
     // logout
     const logOut = ()=>{
+        setLoading(true)
         return signOut(auth).then(()=>{
 
         }).catch(err => console.log(err))
     }
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth,currentUser=>{
+            setUser(currentUser)
+            setLoading(false)
+        })
+        return ()=> unsubscribe()
+    },[])
     const authInfo = {
         user,
         signUp,
         login,
         updateUserProfile,
         logOut,
-        googleLogin
+        googleLogin,
+        loading
     };
     // onAuth state observer
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth,currentUser=>{
-            setUser(currentUser)
-        })
-        return ()=> unsubscribe()
-    },[])
     return (
         <div>
         <ContextProvider.Provider value={authInfo}>
