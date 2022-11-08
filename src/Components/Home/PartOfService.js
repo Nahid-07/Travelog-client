@@ -55,7 +55,7 @@ const PartOfService = () => {
         ))}
       </div>
       <div className="text-center mb-10">
-        <button className="btn btn-outline btn-primary w-1/4">View all</button>
+        <Link to='/services'><button className="btn btn-outline btn-primary w-1/4">View all</button></Link>
       </div>
     </div>
   );

@@ -9,7 +9,22 @@ const MyReviews = () => {
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, [user?.email]);
-  console.log(comments);
+  const handleDelete = (id) => {
+    const confirm = window.confirm("Are you sure you want to delete this item");
+    if (confirm) {
+      fetch(`http://localhost:5000/comments/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            alert("successfully deleted");
+            const rest = comments.filter((resC) => resC._id !== id);
+            setComments(rest);
+          }
+        });
+    }
+  };
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -41,7 +56,12 @@ const MyReviews = () => {
                 <td>{comment._id}</td>
                 <th>
                   <button className="bg-yellow-400 px-4 py-2">Update</button>
-                  <button className="bg-red-600 px-4 py-2">Delete</button>
+                  <button
+                    onClick={() => handleDelete(comment._id)}
+                    className="bg-red-600 px-4 py-2"
+                  >
+                    Delete
+                  </button>
                 </th>
               </tr>
             ))}
