@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
     const [services,setServices] = useState([]);
@@ -17,7 +18,7 @@ const Services = () => {
                         <h2 className="text-3xl font-semibold tracking-wide">{service.title}</h2>
                         <p className="dark:text-gray-100">{service.description.length > 100 ? service.description.slice(0,100):service.description}</p>
                     </div>
-                    <button type="button" className="flex items-center bg-orange-600 text-white justify-center w-full p-3 font-semibold tracking-wide rounded-md ">Read more</button>
+                    <Link to={`/servicedetails/${service._id}`}><button type="button" className="flex items-center bg-orange-600 text-white justify-center w-full p-3 font-semibold tracking-wide rounded-md ">View details</button></Link>
                 </div>
             </div>)
             }

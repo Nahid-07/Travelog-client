@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const PartOfService = () => {
   const [service, setService] = useState([]);
@@ -45,8 +46,9 @@ const PartOfService = () => {
                       ? place.description.slice(0, 100)
                       : place.description}
                   </p>
+                  <p className="text-red-500 text-lg">Price : {place.cost}</p>
                 </div>
-                <button className="btn btn-primary w-full">view details</button>
+                <Link to={`/servicedetails/${place._id}`}><button className="btn btn-primary w-full">view details</button></Link>
               </div>
             </div>
           </div>

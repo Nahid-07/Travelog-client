@@ -10,6 +10,7 @@ const Signup = () => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
+        const photoURL = form.photo.value
         const password = form.password.value;
         const confirmpassword = form.confirmpassword.value;
 
@@ -20,7 +21,7 @@ const Signup = () => {
         signUp(email,password)
         .then( result => {
             const user = result.user;
-            updateUserProfile(name)
+            updateUserProfile(name,photoURL)
             console.log(user);
         })
         .catch(err => console.log(err))
@@ -50,6 +51,19 @@ const Signup = () => {
               name="name"
               placeholder="Your fullname"
               className="w-full px-4 py-3 rounded-md "
+              required
+            />
+          </div>
+          <div className="space-y-1 text-sm">
+            <label className="block">
+              Your Photo url
+            </label>
+            <input
+              type="text"
+              name="photo"
+              placeholder="photoUrl"
+              className="w-full px-4 py-3 rounded-md "
+              required
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -61,6 +75,7 @@ const Signup = () => {
               name="email"
               placeholder="Your email id"
               className="w-full px-4 py-3 rounded-md "
+              required
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -72,6 +87,7 @@ const Signup = () => {
               name="password"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md"
+              required
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -83,6 +99,7 @@ const Signup = () => {
               name="confirmpassword"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md"
+              required
             />
             <p className='text-red-700 text-lg mt-3'>{error}</p>
           </div>

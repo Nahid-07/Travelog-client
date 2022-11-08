@@ -6,37 +6,38 @@ const Navbar = () => {
   const { user, logOut } = useContext(ContextProvider);
   const menu = (
     <>
-      <li className="text-white text-lg">
+      <li className="text-white">
         <Link to="/">Home</Link>
       </li>
-      <li className="text-white text-lg">
+      <li className="text-white">
         <Link to="/services">Services</Link>
       </li>
       {
-        user?.email && <li className="text-white text-lg">
+        user?.email && <li className="text-white">
         <Link to="/myreviews">My reviews</Link>
       </li>
       }
       {
-        user?.email && <li className="text-white text-lg">
+        user?.email && <li className="text-white">
         <Link to="/adservice">Add service</Link>
       </li>
       }
       {user?.email ? (
         <>
-          <li onClick={logOut} className="text-white text-lg">
+          <li onClick={logOut} className="text-white">
             <Link to="login">Log Out</Link>
           </li>
-          <li className="text-white text-lg">
+          <li className="text-white">
             <Link to="login">{user.displayName}</Link>
           </li>
+          <img src={user?.photoURL} alt="" className="w-10 rounded-full"/>
         </>
       ) : (
         <>
-          <li className="text-white text-lg">
+          <li className="text-white">
             <Link to="login">Login</Link>
           </li>
-          <li className="text-white text-lg">
+          <li className="text-white">
             <Link to="signup">Signup</Link>
           </li>
         </>
