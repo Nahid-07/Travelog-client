@@ -1,11 +1,11 @@
 import React, { useContext, useState  } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { ContextProvider } from '../../Context/AuthContext';
 import useTitle from '../hook/useTitle';
 
 const Login = () => {
     const [error,setError]=useState('');
-    const {login,googleLogin,loading} = useContext(ContextProvider);
+    const {login,googleLogin,loading,user} = useContext(ContextProvider);
     useTitle('login')
     const navigate = useNavigate();
     let location = useLocation();
@@ -19,10 +19,8 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         login(email,password)
-        .then(result =>{
-            const user = result.user;
-            console.log(user);
-            navigate(from, { replace: true })
+        .then(() =>{
+            // const user = result.user;
         }).catch(err => setError(err.message))
 
         setError('')
@@ -38,6 +36,9 @@ const Login = () => {
     }
   return (
       <div className="w-full max-w-md p-8 mx-auto space-y-3 rounded-xl bg-gray-100 my-20">
+        {
+          user?.email && <Navigate to={from}></Navigate>
+        }
         <h1 className="text-2xl font-bold text-center text-orange-600">
           Login
         </h1>

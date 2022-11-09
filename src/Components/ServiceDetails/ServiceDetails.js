@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import {  Navigate, useLoaderData } from "react-router-dom";
+import {  Link, Navigate, useLoaderData } from "react-router-dom";
 import { ContextProvider } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
 import useTitle from "../hook/useTitle";
@@ -51,11 +51,6 @@ const ServiceDetails = () => {
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, [comments]);
-  // const handleComment=()=>{
-  //   if(!user?.emial){
-  //     return <Navigate to='/login'></Navigate>
-  //   }
-  // }
   return (
     <section className="">
       <div className="container max-w-full p-6 mx-auto space-y-6 sm:space-y-12">
@@ -335,7 +330,8 @@ const ServiceDetails = () => {
                   </button>
                 </div>
               </div>
-              <form onSubmit={handleReview} className="flex flex-col w-full">
+              {
+                user?.email ? <form onSubmit={handleReview} className="flex flex-col w-full">
                 <textarea
                   rows="3"
                   name="message"
@@ -349,6 +345,14 @@ const ServiceDetails = () => {
                   Leave feedback
                 </button>
               </form>
+              :
+              <>
+                <div className="text-red-800 text-xl">
+                Pleaser log in to add your valueable review
+              </div>
+              <Link to='/login' className="bg-orange-600 px-5 py-3 text-white font-semibold rounded-full mt-4">Login</Link>
+              </>
+              }
             </div>
           </div>
         </div>
