@@ -9,7 +9,11 @@ const MyReviews = () => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/comments?email=${user?.email}`)
+    fetch(`http://localhost:5000/comments?email=${user?.email}`,{
+      headers:{
+        authorization : `Beerer ${localStorage.getItem('token')}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, [user?.email]);

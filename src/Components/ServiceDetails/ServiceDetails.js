@@ -49,7 +49,9 @@ const ServiceDetails = () => {
   useEffect(() => {
     fetch("http://localhost:5000/comments")
       .then((res) => res.json())
-      .then((data) => setComments(data));
+      .then((data) => {
+        setComments(data)
+      });
   }, [comments]);
 
   

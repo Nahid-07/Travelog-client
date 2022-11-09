@@ -1,28 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
       <footer className="footer p-10 bg-neutral text-neutral-content">
-      <div>
-        <span className="footer-title">Services</span>
-        <Link className="link link-hover">Branding</Link>
-        <Link className="link link-hover">Design</Link>
-        <Link className="link link-hover">Marketing</Link>
-        <Link className="link link-hover">Advertisement</Link>
+      <div className="text-2xl font-bold">
+       wellcome to traVlog
+       <p className="text-sm text-gray-400"><small>all right reserved by Nahid &copy;</small></p>
       </div>
       <div>
-        <span className="footer-title">Company</span>
-        <Link className="link link-hover">About us</Link>
-        <Link className="link link-hover">Contact</Link>
-        <Link className="link link-hover">Jobs</Link>
-        <Link className="link link-hover">Press kit</Link>
+        <span className="footer-title">Welcome to traVlog</span>
+        <Link to='/login' className="link link-hover">Log in</Link>
+        <Link to="/blog" className="link link-hover">Blog</Link>
+        <Link to='/services' className="link link-hover">Services</Link>
       </div>
       <div>
-        <span className="footer-title">Legal</span>
-        <Link className="link link-hover">Terms of use</Link>
-        <Link className="link link-hover">Privacy policy</Link>
-        <Link className="link link-hover">Cookie policy</Link>
+        <span className="footer-title">Social</span>
+        <Link className="link link-hover text-2xl text-blue-400"><FaFacebook /></Link>
+        <Link className="link link-hover text-2xl text-blue-400"><FaTwitter/></Link>
+        <Link className="link link-hover text-2xl text-green-400"><FaWhatsapp></FaWhatsapp></Link>
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import React, { useContext, useState  } from 'react';
-import { Link, Navigate, useLocation, } from 'react-router-dom';
+import { json, Link, Navigate, useLocation, } from 'react-router-dom';
 import { ContextProvider } from '../../Context/AuthContext';
 import useTitle from '../hook/useTitle';
 
@@ -35,9 +35,9 @@ const Login = () => {
     }
   return (
       <div className="w-full max-w-md p-8 mx-auto space-y-3 rounded-xl bg-gray-100 my-20">
-        {
+        {/* {
           user?.email && <Navigate to={from}></Navigate>
-        }
+        } */}
         <h1 className="text-2xl font-bold text-center text-orange-600">
           Login
         </h1>
