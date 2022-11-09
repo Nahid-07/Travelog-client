@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const PartOfService = () => {
   const [service, setService] = useState([]);
@@ -19,22 +21,20 @@ const PartOfService = () => {
             <div className="max-w-lg p-4 shadow-md ">
               <div className="flex justify-between pb-4 border-bottom">
                 <div className="flex items-center">
-                  <p
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="mb-0 capitalize "
-                  >
-                    Photography
-                  </p>
+                  <p className="mb-0 capitalize ">Photography</p>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <img
+                  <PhotoProvider>
+                    <PhotoView src={place.img}>
+                    <img
                     src={place.img}
                     alt=""
                     className="block object-cover object-center w-full rounded-md h-72 "
                   />
+                    </PhotoView>
+                  </PhotoProvider>
                 </div>
 
                 <div className="space-y-2">
@@ -48,14 +48,22 @@ const PartOfService = () => {
                   </p>
                   <p className="text-red-500 text-lg">Price : {place.cost}</p>
                 </div>
-                <Link to={`/servicedetails/${place._id}`}><button className="btn btn-primary w-full">view details</button></Link>
+                <Link to={`/servicedetails/${place._id}`}>
+                  <button className="btn btn-primary w-full">
+                    view details
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
       <div className="text-center mb-10">
-        <Link to='/services'><button className="btn btn-outline btn-primary w-1/4">View all</button></Link>
+        <Link to="/services">
+          <button className="btn btn-outline btn-primary w-1/4">
+            View all
+          </button>
+        </Link>
       </div>
     </div>
   );
