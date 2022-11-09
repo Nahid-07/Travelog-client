@@ -350,7 +350,7 @@ const ServiceDetails = () => {
               :
               <>
                 <div className="text-red-800 text-xl">
-                Pleaser log in to add your valueable review
+                Please log in to add your valueable review
               </div>
               <Link to='/login' className="bg-orange-600 px-5 py-3 text-white font-semibold rounded-full mt-4">Login</Link>
               </>

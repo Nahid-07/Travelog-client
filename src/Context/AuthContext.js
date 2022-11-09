@@ -39,13 +39,7 @@ const AuthContext = ({ children }) => {
 
         }).catch(err => console.log(err))
     }
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth,currentUser=>{
-            setUser(currentUser)
-            setLoading(false)
-        })
-        return ()=> unsubscribe()
-    },[])
+    
     const authInfo = {
         user,
         signUp,
@@ -56,7 +50,13 @@ const AuthContext = ({ children }) => {
         loading
     };
     // onAuth state observer
-
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth,currentUser=>{
+            setUser(currentUser)
+            setLoading(false)
+        })
+        return ()=> unsubscribe()
+    },[])
     return (
         <div>
         <ContextProvider.Provider value={authInfo}>

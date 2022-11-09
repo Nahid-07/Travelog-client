@@ -18,7 +18,7 @@ const Navbar = () => {
       </li>
       }
       {
-        user?.email && <li className="text-white">
+      <li className="text-white">
         <Link to="/adservices">Add service</Link>
       </li>
       }

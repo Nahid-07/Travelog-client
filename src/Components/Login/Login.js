@@ -9,19 +9,16 @@ const Login = () => {
     useTitle('login')
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    if(loading){
-      return <progress className="progress w-full"></progress>
-    }
     const handleSubmit = e =>{
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         login(email,password)
-        .then(() =>{
-            // const user = result.user;
+        .then((result) =>{
+            const user = result.user;
+            console.log(user);
         }).catch(err => setError(err.message))
-
         setError('')
     }
     const handleGoogle = ()=>{
@@ -32,6 +29,9 @@ const Login = () => {
         .catch(err => setError(err.message))
         setError('')
         
+    }
+    if(loading){
+      return <progress className="progress w-full"></progress>
     }
   return (
       <div className="w-full max-w-md p-8 mx-auto space-y-3 rounded-xl bg-gray-100 my-20">
