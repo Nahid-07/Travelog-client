@@ -49,7 +49,7 @@ const PartOfService = () => {
                   <p className="text-red-500 text-lg">Price : {place.cost}</p>
                 </div>
                 <Link to={`/servicedetails/${place._id}`}>
-                  <button className="btn btn-primary w-full">
+                  <button className="bg-orange-600 py-3 rounded-lg text-white font-semibold w-full">
                     view details
                   </button>
                 </Link>
@@ -60,7 +60,7 @@ const PartOfService = () => {
       </div>
       <div className="text-center mb-10">
         <Link to="/services">
-          <button className="btn btn-outline btn-primary w-1/4">
+          <button className="btn btn-outline btn-warning w-1/4">
             View all
           </button>
         </Link>

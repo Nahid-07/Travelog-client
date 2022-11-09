@@ -3,8 +3,11 @@ import { Navigate, useLocation } from "react-router-dom";
 import { ContextProvider } from "../Context/AuthContext";
 
 const PrivetRouter = ({ children }) => {
-  const { user } = useContext(ContextProvider);
+  const { user,loading } = useContext(ContextProvider);
   let location = useLocation();
+  if(loading){
+    return <progress className="progress w-full"></progress>
+  }
   if (user) {
     return children;
   }

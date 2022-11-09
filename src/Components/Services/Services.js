@@ -43,6 +43,7 @@ const Services = () => {
                   ? service.description.slice(0, 100)
                   : service.description}
               </p>
+              <p> cost :{service.cost}</p>
             </div>
             <Link to={`/servicedetails/${service._id}`}>
               <button
