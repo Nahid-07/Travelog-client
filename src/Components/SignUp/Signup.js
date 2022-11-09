@@ -8,10 +8,10 @@ const Signup = () => {
     const {signUp,updateUserProfile,googleLogin,loading} = useContext(ContextProvider);
     useTitle('Register')
     const navigate = useNavigate()
+    if(loading){
+      return <progress className="progress w-full"></progress>
+    }
     const handleSubmit = (event)=>{
-      if(loading){
-        return <progress className="progress w-full"></progress>
-      }
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;

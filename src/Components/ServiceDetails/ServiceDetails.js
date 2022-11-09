@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import {  Link, Navigate, useLoaderData } from "react-router-dom";
+import {  Link , useLoaderData } from "react-router-dom";
 import { ContextProvider } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
 import useTitle from "../hook/useTitle";
@@ -51,6 +51,8 @@ const ServiceDetails = () => {
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, [comments]);
+
+  
   return (
     <section className="">
       <div className="container max-w-full p-6 mx-auto space-y-6 sm:space-y-12">

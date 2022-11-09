@@ -33,7 +33,6 @@ const Navbar = () => {
           <li className="text-white">
             <Link to="login">{user.displayName}</Link>
           </li>
-          <img src={user?.photoURL} alt="" className="w-10 rounded-full"/>
         </>
       ) : (
         <>

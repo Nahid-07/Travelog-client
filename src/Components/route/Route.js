@@ -10,6 +10,7 @@ import MyReviews from "../Myreviews/MyReviews";
 import ServiceDetails from "../ServiceDetails/ServiceDetails";
 import Services from "../Services/Services";
 import Signup from "../SignUp/Signup";
+import Update from "../Update/Update";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
            },
            {
             path : '/blog',element:<Blog></Blog>
+           },
+           {
+            path : '/comments/:id',element: <Update></Update>,
+            loader:({params})=> fetch(`http://localhost:5000/comments/${params.id}`)
            }
         ]
     }

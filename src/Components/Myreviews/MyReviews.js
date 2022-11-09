@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ContextProvider } from "../../Context/AuthContext";
 import useTitle from "../hook/useTitle";
 
@@ -35,8 +36,6 @@ const MyReviews = () => {
         });
     }
   };
-
-  
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -69,9 +68,9 @@ const MyReviews = () => {
                     <td>{comment.title}</td>
                     <td>{comment._id}</td>
                     <th>
-                      <button className="bg-yellow-400 px-4 py-2">
+                      <Link to={`/comments/${comment._id}`}><button className="bg-yellow-400 px-4 py-2">
                         Update
-                      </button>
+                      </button></Link>
                       <button
                         onClick={() => handleDelete(comment._id)}
                         className="bg-red-600 px-4 py-2"
