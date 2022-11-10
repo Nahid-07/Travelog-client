@@ -6,19 +6,19 @@ import "react-photo-view/dist/react-photo-view.css";
 import { ContextProvider } from "../../Context/AuthContext";
 
 const Services = () => {
-    useTitle("services");
+  useTitle("services");
   const [services, setServices] = useState([]);
-  const {loading} = useContext(ContextProvider)
-  
+  const { loading } = useContext(ContextProvider);
+
   useEffect(() => {
     fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
-  if(loading){
-    return <progress className="progress w-full"></progress>
+  if (loading) {
+    return <progress className="progress w-full"></progress>;
   }
-  
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20 justify-items-center px-2">
       {services.map((service) => (

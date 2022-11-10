@@ -5,7 +5,8 @@ import useTitle from "../hook/useTitle";
 const AddServices = () => {
   useTitle("add_service");
   const today = new Date();
-  const time = today.getTime()
+  const time = today.getTime();
+  // update form
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,7 +23,7 @@ const AddServices = () => {
       advice: form.advice.value,
       description: form.description.value,
     };
-    console.log(service);
+    // posting data to the server
     fetch("http://localhost:5000/services", {
       method: "POST",
       headers: {
@@ -33,6 +34,7 @@ const AddServices = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
+          // sweet alert
           Swal.fire({
             position: "center",
             icon: "success",

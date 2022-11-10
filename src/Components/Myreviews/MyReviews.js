@@ -4,26 +4,24 @@ import { ContextProvider } from "../../Context/AuthContext";
 import useTitle from "../hook/useTitle";
 
 const MyReviews = () => {
-  useTitle('my_reviews')
+  useTitle("my_reviews");
   const { user, loading } = useContext(ContextProvider);
   const [comments, setComments] = useState([]);
-
+// fetching comment by query email
   useEffect(() => {
-    fetch(`http://localhost:5000/comments?email=${user?.email}`,{
-      headers:{
-        authorization : `Bearer ${localStorage.getItem('Token')}`
-      }
+    fetch(`http://localhost:5000/comments?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("Token")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, [user?.email]);
 
-
   if (loading) {
     return <progress className="progress w-full"></progress>;
   }
-
-
+  // handle delete
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure you want to delete this item");
     if (confirm) {
@@ -72,9 +70,11 @@ const MyReviews = () => {
                     <td>{comment.title}</td>
                     <td>{comment._id}</td>
                     <th>
-                      <Link to={`/comments/${comment._id}`}><button className="bg-yellow-400 px-4 py-2">
-                        Update
-                      </button></Link>
+                      <Link to={`/comments/${comment._id}`}>
+                        <button className="bg-yellow-400 px-4 py-2">
+                          Update
+                        </button>
+                      </Link>
                       <button
                         onClick={() => handleDelete(comment._id)}
                         className="bg-red-600 px-4 py-2"

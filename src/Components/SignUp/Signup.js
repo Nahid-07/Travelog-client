@@ -8,9 +8,11 @@ const Signup = () => {
     const {signUp,updateUserProfile,googleLogin,loading} = useContext(ContextProvider);
     useTitle('Register')
     const navigate = useNavigate()
+    // using loader to load data
     if(loading){
       return <progress className="progress w-full"></progress>
     }
+    // handle submit added
     const handleSubmit = (event)=>{
         event.preventDefault()
         const form = event.target;
@@ -23,17 +25,32 @@ const Signup = () => {
         if(password !== confirmpassword){
             return setError('password din not match')
         }
-        console.log(name,email,password,confirmpassword)
+
         signUp(email,password)
-        .then( result => {
+        .then( (result) => {
             const user = result.user;
+            const currentUser = {
+              email : user.email
+            }
             updateUserProfile(name,photoURL);
+            fetch('http://localhost:5000/jwt',{
+              method: 'POST',
+              headers:{
+                "content-type" : "application/json"
+              },
+              body:JSON.stringify(currentUser)
+            })
+            .then(res=>res.json())
+            .then(data => {
+              localStorage.setItem('Token', data.token)
+              console.log(data)
+            })
             navigate('/')
-            console.log(user);
         })
         .catch(err => setError(err.message))
         setError('')
     }
+    // handle google login
     const handleGoogle = ()=>{
         googleLogin()
         .then(()=>{

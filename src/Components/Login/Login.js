@@ -9,6 +9,7 @@ const Login = () => {
     useTitle('login')
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    // submit
     const handleSubmit = e =>{
         e.preventDefault()
         const form = e.target;
@@ -37,6 +38,7 @@ const Login = () => {
         }).catch(err => setError(err.message))
         setError('')
     }
+    // google login
     const handleGoogle = ()=>{
         googleLogin()
         .then(()=>{
@@ -46,6 +48,7 @@ const Login = () => {
         setError('')
         
     }
+    // loading added
     if(loading){
       return <progress className="progress w-full"></progress>
     }
@@ -132,7 +135,7 @@ const Login = () => {
           Don't have an account?
           <Link
             to='/signup'
-            className="underline dark:text-gray-100"
+            className="underline text-orange-600"
           >
             Sign up
           </Link>

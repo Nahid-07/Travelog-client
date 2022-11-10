@@ -9,7 +9,6 @@ const PartOfService = () => {
     fetch("http://localhost:5000/servicespart")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setService(data);
       });
   }, []);
@@ -28,11 +27,11 @@ const PartOfService = () => {
                 <div className="space-y-2">
                   <PhotoProvider>
                     <PhotoView src={place.img}>
-                    <img
-                    src={place.img}
-                    alt=""
-                    className="block object-cover object-center w-full rounded-md h-72 "
-                  />
+                      <img
+                        src={place.img}
+                        alt=""
+                        className="block object-cover object-center w-full rounded-md h-72 "
+                      />
                     </PhotoView>
                   </PhotoProvider>
                 </div>
