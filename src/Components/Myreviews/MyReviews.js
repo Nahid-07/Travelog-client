@@ -11,7 +11,7 @@ const MyReviews = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/comments?email=${user?.email}`,{
       headers:{
-        authorization : `Beerer ${localStorage.getItem('token')}`
+        authorization : `Bearer ${localStorage.getItem('Token')}`
       }
     })
       .then((res) => res.json())

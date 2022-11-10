@@ -47,7 +47,7 @@ const ServiceDetails = () => {
       });
   };
   useEffect(() => {
-    fetch("http://localhost:5000/comments")
+    fetch("http://localhost:5000/allcomments")
       .then((res) => res.json())
       .then((data) => {
         setComments(data)
@@ -94,7 +94,7 @@ const ServiceDetails = () => {
               {/* load public comments */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {comments.map((comment) => (
-                  <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md bg-gray-300">
+                  <div key={comment._id} className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md bg-gray-300">
                     <div className="flex justify-between p-4">
                       <div className="flex space-x-4">
                         <div>

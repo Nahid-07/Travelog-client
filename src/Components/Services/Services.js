@@ -22,7 +22,7 @@ const Services = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-20 justify-items-center px-2">
       {services.map((service) => (
-        <div className="max-w-xs rounded-md shadow-md  ">
+        <div key={service._id} className="max-w-xs rounded-md shadow-md  ">
           <PhotoProvider>
             <PhotoView src={service.img}>
               <img

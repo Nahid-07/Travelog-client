@@ -73,7 +73,7 @@ const Navbar = () => {
             {menu}
           </ul>
         </div>
-        <Link className="btn btn-ghost normal-case text-xl text-white">
+        <Link to='/' className="btn btn-ghost normal-case text-xl text-white">
           tra<span className="text-orange-600">Vlog</span>
         </Link>
       </div>
