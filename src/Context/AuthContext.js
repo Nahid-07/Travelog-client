@@ -30,6 +30,7 @@ const AuthContext = ({ children }) => {
   };
   // google sign in
   const googleLogin = () => {
+    localStorage.removeItem("Token");
     setLoading(true);
     return signInWithPopup(auth, provider);
   };

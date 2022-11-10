@@ -21,7 +21,7 @@ const Login = () => {
             const currentUser = {
               email : user.email
             }
-            console.log(currentUser);
+            // console.log(currentUser);
             fetch('https://assignment-11-server-chi.vercel.app/jwt',{
               method: 'POST',
               headers:{
@@ -32,7 +32,7 @@ const Login = () => {
             .then(res=>res.json())
             .then(data => {
               localStorage.setItem('Token', data.token)
-              console.log(data)
+              // console.log(data)
             })
             
         }).catch(err => setError(err.message))
@@ -41,7 +41,24 @@ const Login = () => {
     // google login
     const handleGoogle = ()=>{
         googleLogin()
-        .then(()=>{
+        .then((result)=>{
+          const user = result.user;
+            const currentUser = {
+              email : user.email
+            }
+
+            fetch('https://assignment-11-server-chi.vercel.app/jwt',{
+              method: 'POST',
+              headers:{
+                "content-type" : "application/json"
+              },
+              body:JSON.stringify(currentUser)
+            })
+            .then(res=>res.json())
+            .then(data => {
+              localStorage.setItem('Token', data.token)
+              // console.log(data)
+            })
 
         })
         .catch(err => setError(err.message))
