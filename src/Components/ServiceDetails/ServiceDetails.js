@@ -9,8 +9,6 @@ const ServiceDetails = () => {
   const { user } = useContext(ContextProvider);
   const [comments, setComments] = useState([]);
   useTitle('service_details')
-  // console.log(user);
-  //   console.log(data);
 
   const handleReview = (e) => {
     e.preventDefault();

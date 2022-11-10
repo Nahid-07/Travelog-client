@@ -13,15 +13,16 @@ const Navbar = () => {
         <Link to="/services">Services</Link>
       </li>
       {user?.email && (
-        <li className="text-white">
-          <Link to="/myreviews">My reviews</Link>
-        </li>
-      )}
-      {
+        <><li className="text-white">
+        <Link to="/myreviews">My reviews</Link>
+      </li>
+      
         <li className="text-white">
           <Link to="/adservices">Add service</Link>
         </li>
-      }
+      </>
+      )}
+      
       <li className="text-white">
         <Link to="/blog">Blog</Link>
       </li>
@@ -73,8 +74,8 @@ const Navbar = () => {
             {menu}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl text-white">
-          tra<span className="text-orange-600">Vlog</span>
+        <Link to="/" className="btn btn-ghost normal-case text-2xl text-white">
+          Tra<span className="text-orange-600">Vlog</span>
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
