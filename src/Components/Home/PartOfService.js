@@ -6,7 +6,7 @@ import "react-photo-view/dist/react-photo-view.css";
 const PartOfService = () => {
   const [service, setService] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/servicespart")
+    fetch("https://assignment-11-server-chi.vercel.app/servicespart")
       .then((res) => res.json())
       .then((data) => {
         setService(data);

@@ -9,7 +9,7 @@ const Update = () => {
     const updatedMessage = {
       message: e.target.message.value,
     };
-    fetch(`http://localhost:5000/comments/${comment._id}`, {
+    fetch(`https://assignment-11-server-chi.vercel.app/comments/${comment._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -9,7 +9,7 @@ const MyReviews = () => {
   const [comments, setComments] = useState([]);
 // fetching comment by query email
   useEffect(() => {
-    fetch(`http://localhost:5000/comments?email=${user?.email}`, {
+    fetch(`https://assignment-11-server-chi.vercel.app/comments?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("Token")}`,
       },
@@ -25,7 +25,7 @@ const MyReviews = () => {
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure you want to delete this item");
     if (confirm) {
-      fetch(`http://localhost:5000/comments/${id}`, {
+      fetch(`https://assignment-11-server-chi.vercel.app/comments/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
