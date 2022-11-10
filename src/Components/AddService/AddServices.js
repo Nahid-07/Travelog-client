@@ -5,7 +5,7 @@ import useTitle from "../hook/useTitle";
 const AddServices = () => {
   useTitle("add_service");
   const today = new Date();
-  const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  const time = today.getTime()
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
