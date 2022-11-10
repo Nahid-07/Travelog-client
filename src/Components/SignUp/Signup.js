@@ -43,7 +43,6 @@ const Signup = () => {
             .then(res=>res.json())
             .then(data => {
               localStorage.setItem('Token', data.token)
-              console.log(data)
             })
             navigate('/')
         })
@@ -54,7 +53,7 @@ const Signup = () => {
     const handleGoogle = ()=>{
         googleLogin()
         .then(()=>{
-
+          navigate('/')
         })
         .catch(err => setError(err.message))
         setError('')
