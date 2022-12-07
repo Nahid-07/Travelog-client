@@ -4,7 +4,8 @@ import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-neutral text-neutral-content">
+    <div className=" bg-[#393E46]">
+      <footer className="footer container mx-auto p-10 text-neutral-content">
       <div className="text-2xl font-bold">
         wellcome to traVlog
         <p className="text-sm text-gray-400">
@@ -36,6 +37,7 @@ const Footer = () => {
         </Link>
       </div>
     </footer>
+    </div>
   );
 };
 

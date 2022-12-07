@@ -48,7 +48,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-[#393E46] py-5">
+    <div className="bg-[#393E46]  py-4">
+      <div className="navbar container mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -81,6 +82,7 @@ const Navbar = () => {
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menu}</ul>
       </div>
+    </div>
     </div>
   );
 };
