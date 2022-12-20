@@ -5,13 +5,11 @@ import useTitle from '../hook/useTitle';
 
 const Signup = () => {
     const [error,setError] = useState('');
-    const {signUp,updateUserProfile,googleLogin,loading} = useContext(ContextProvider);
+    const {signUp,updateUserProfile,googleLogin} = useContext(ContextProvider);
     useTitle('Register')
     const navigate = useNavigate()
     // using loader to load data
-    if(loading){
-      return <progress className="progress w-full"></progress>
-    }
+
     // handle submit added
     const handleSubmit = (event)=>{
         event.preventDefault()

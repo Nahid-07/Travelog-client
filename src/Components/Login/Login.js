@@ -5,7 +5,7 @@ import useTitle from '../hook/useTitle';
 
 const Login = () => {
     const [error,setError]=useState('');
-    const {login,googleLogin,loading,user} = useContext(ContextProvider);
+    const {login,googleLogin,user} = useContext(ContextProvider);
     useTitle('login')
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -65,10 +65,6 @@ const Login = () => {
         setError('')
         
     }
-    // loading added
-    if(loading){
-      return <progress className="progress w-full"></progress>
-    }
   return (
       <div className="w-full max-w-md p-8 mx-auto space-y-3 rounded-xl bg-gray-100 my-20">
         {
@@ -102,12 +98,12 @@ const Login = () => {
               required
             />
             <div className="flex justify-end text-xs ">
-              <a rel="noopener noreferrer" href="#">
+              <Link>
                 Forgot Password?
-              </a>
+              </Link>
             </div>
           </div>
-          <p className="text-lg text-red-600">{error}</p>
+          <p className="text-lg text-red-600">{error.slice(22,-1)}</p>
           <button className="block w-full p-3 text-center rounded-md bg-orange-600 text-white font-semibold">
             Sign in
           </button>
