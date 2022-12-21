@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className=" bg-[#393E46]">
+    <div className=" bg-black py-28">
       <footer className="footer container mx-auto p-10 text-neutral-content">
       <div className="text-2xl font-bold">
         wellcome to traVlog

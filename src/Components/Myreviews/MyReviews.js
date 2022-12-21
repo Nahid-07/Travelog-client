@@ -7,13 +7,16 @@ const MyReviews = () => {
   useTitle("my_reviews");
   const { user, loading } = useContext(ContextProvider);
   const [comments, setComments] = useState([]);
-// fetching comment by query email
+  // fetching comment by query email
   useEffect(() => {
-    fetch(`https://assignment-11-server-chi.vercel.app/comments?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("Token")}`,
-      },
-    })
+    fetch(
+      `https://assignment-11-server-chi.vercel.app/comments?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("Token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, [user?.email]);
@@ -39,7 +42,7 @@ const MyReviews = () => {
     }
   };
   return (
-    <div>
+    <div className="my-20">
       <div className="overflow-x-auto w-full">
         {comments.length > 0 ? (
           <>
