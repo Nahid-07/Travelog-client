@@ -2,19 +2,22 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import Speener from "../speener/Spenner";
 
 const PartOfService = () => {
   const [service, setService] = useState([]);
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     fetch("https://assignment-11-server-chi.vercel.app/servicespart")
       .then((res) => res.json())
       .then((data) => {
         setService(data);
+        setLoading(false)
       });
   }, []);
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
+      {loading ? <Speener></Speener> :<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
         {service.map((place) => (
           <div key={place._id}>
             <div className="max-w-lg p-4 shadow-md ">
@@ -56,7 +59,7 @@ const PartOfService = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div>}
       <div className="text-center mb-10">
         <Link to="/services">
           <button className="btn btn-outline btn-warning w-1/4">

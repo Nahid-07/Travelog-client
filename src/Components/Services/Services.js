@@ -3,24 +3,27 @@ import { Link } from "react-router-dom";
 import useTitle from "../hook/useTitle";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import { ContextProvider } from "../../Context/AuthContext";
+import Speener from "../speener/Spenner";
+// import { ContextProvider } from "../../Context/AuthContext";
 
 const Services = () => {
   useTitle("services");
   const [services, setServices] = useState([]);
-  const { loading } = useContext(ContextProvider);
+  // const { loading } = useContext(ContextProvider);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch("https://assignment-11-server-chi.vercel.app/services")
       .then((res) => res.json())
-      .then((data) => setServices(data));
+      .then((data) => {
+        setServices(data)
+        setLoading(false)
+      });
+      
   }, []);
-  if (loading) {
-    return <progress className="progress w-full"></progress>;
-  }
-
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-20 justify-items-center px-2">
+    <>
+      {loading ? <Speener></Speener>:<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-20 justify-items-center px-2">
       {services.map((service) => (
         <div key={service._id} className="rounded-md shadow-md  ">
           <PhotoProvider>
@@ -56,7 +59,8 @@ const Services = () => {
           </div>
         </div>
       ))}
-    </div>
+    </div>}
+    </>
   );
 };
 export default Services;
